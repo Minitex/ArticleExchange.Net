@@ -9,3 +9,5 @@ To Do
 1. Implement the JSON response format, currently it only uses XML.
 2. Catch all possible exceptions appropriately to pass out of the library.
 3. Convert stored credentials in memory to SecureString.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/swandog30/Oclc.ArticleExchange/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
