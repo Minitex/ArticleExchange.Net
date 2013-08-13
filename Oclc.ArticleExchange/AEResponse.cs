@@ -3,6 +3,7 @@
     using System.IO;
     using System.Xml.Serialization;
     using System.Xml;
+    using System.Text;
 
     /// <summary>
     /// 
@@ -29,7 +30,7 @@
             }
         }
 
-        private byte[] rawResponse { get; set; }
+        private string rawResponse { get; set; }
 
         #endregion
 
@@ -46,15 +47,29 @@
         /// <param name="response">Raw response from the web service.</param>
         public AEResponse(byte[] response)
         {
-            this.rawResponse = response;
-            
-            // Parse out the returned bytes
-            // Should be catching exceptions here
-            string temp = System.Text.Encoding.UTF8.GetString(rawResponse);
+            this.rawResponse = Encoding.UTF8.GetString(response);
+            this.Process();
+        }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="response">Raw response from the web service.</param>
+        public AEResponse(string response)
+        {
+            this.rawResponse = response;
+            this.Process();
+        }
+
+        #endregion
+
+        #region Methods
+
+        void Process()
+        {
+            string temp = this.rawResponse;
             temp = temp.Replace(" xmlns=\"\"", "");
 
-            // MemoryStream xmlStream = new MemoryStream(this.rawResponse);
             MemoryStream xmlStream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(temp));
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(AEResponseXml), "http://www.w3.org/2005/Atom");
@@ -62,10 +77,11 @@
             AEResponseXml x = (AEResponseXml)xmlSerializer.Deserialize(xmlStream);
 
             this._Url = x.content.uploadResponse.accessInformationResponse.url;
-            this._Password = x.content.uploadResponse.accessInformationResponse.password;                
+            this._Password = x.content.uploadResponse.accessInformationResponse.password;
         }
 
         #endregion
+
     }
 
     // get rid of compiler warnings for unassigned field values for the internal classes
