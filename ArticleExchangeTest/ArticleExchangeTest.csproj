@@ -46,9 +46,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Oclc.ArticleExchange\Oclc.ArticleExchange.csproj">
+    <ProjectReference Include="..\ArticleExchange.Net\ArticleExchange.Net.csproj">
       <Project>{0db8e4c9-89ff-40f7-83d4-84a1e0f31d90}</Project>
-      <Name>Oclc.ArticleExchange</Name>
+      <Name>ArticleExchange.Net</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
