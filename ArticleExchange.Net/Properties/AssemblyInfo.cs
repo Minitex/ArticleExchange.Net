@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("University of Minnesota")]
-[assembly: AssemblyProduct("Oclc.ArticleExchange")]
+[assembly: AssemblyProduct("ArticleExchange.Net")]
 [assembly: AssemblyCopyright("Copyright © University of Minnesota 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
